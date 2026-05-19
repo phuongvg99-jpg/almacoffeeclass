@@ -3,32 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vietnamese Coffee Workshop · Alma Tropical Coffee & Brunch</title>
+  <title>Alma Coffee Workshop — Book Your Seat</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=AR+One+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* ─── Brand Tokens (Alma Brand Guideline) ─── */
-    :root {
-      --green:       #005B44;
-      --green-dark:  #003D2E;
-      --yellow:      #EBB950;
-      --yellow-light:#F5D98A;
-      --light-green: #5EBFA0;
-      --beige:       #ECE8D6;
-      --beige-dark:  #DDD8C3;
-      --brown:       #1E0B04;
-      --orange:      #DC6932;
-      --white:       #FFFFFF;
-
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --shadow:      0 4px 24px rgba(0,91,68,.12);
-      --shadow-hover: 0 8px 32px rgba(0,91,68,.20);
-    }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:  #005B44;
+      --yellow: #EBB950;
+      --beige:  #ECE8D6;
+      --brown:  #1E0B04;
+      --orange: #DC6932;
+      --radius: 16px;
+    }
 
     body {
       font-family: 'AR One Sans', sans-serif;
@@ -37,811 +25,725 @@
       min-height: 100vh;
     }
 
-    /* ─── HERO ─── */
+    /* ── HERO ── */
     .hero {
       background: var(--green);
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
+      color: #fff;
+      text-align: center;
+      padding: 48px 24px 40px;
     }
-
-    /* subtle leaf-pattern overlay */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 15% 85%, rgba(94,191,160,.18) 0%, transparent 50%),
-        radial-gradient(circle at 85% 10%, rgba(235,185,80,.10) 0%, transparent 45%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 52px 24px 48px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    /* Logo block */
     .hero-logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-      flex-shrink: 0;
-    }
-    .hero-logo img {
-      width: 180px;
-      height: auto;
-      /* logo PNG is dark on transparent — invert to white for green bg */
+      height: 72px;
       filter: brightness(0) invert(1);
-    }
-
-    /* Title block */
-    .hero-text {}
-    .workshop-eyebrow {
-      display: inline-block;
-      background: var(--yellow);
-      color: var(--brown);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 99px;
-      margin-bottom: 16px;
-    }
-    .hero-text h1 {
-      font-size: clamp(1.9rem, 5vw, 3rem);
-      font-weight: 700;
-      line-height: 1.12;
-      letter-spacing: -.01em;
       margin-bottom: 20px;
     }
-    .hero-text h1 em {
-      font-style: normal;
-      color: var(--yellow);
+    .hero h1 {
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
     }
-
-    /* Flyer headline verbatim */
-    .hero-hook {
+    .hero h1 span { color: var(--yellow); }
+    .hero p {
+      margin-top: 10px;
+      opacity: 0.85;
       font-size: 1rem;
-      line-height: 1.75;
-      opacity: .9;
-      max-width: 440px;
     }
-    .hero-hook strong { font-weight: 700; }
 
-    /* ─── HIGHLIGHTS STRIP ─── */
+    /* ── HIGHLIGHTS STRIP ── */
     .highlights {
-      background: var(--yellow);
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      gap: 10px 24px;
+      background: var(--yellow);
+      padding: 14px 24px;
     }
-    .hl-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px 36px;
-      gap: 3px;
-      flex: 1 1 140px;
-      border-right: 1px solid rgba(0,0,0,.09);
-    }
-    .hl-item:last-child { border-right: none; }
-    .hl-label {
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      opacity: .55;
+    .highlight-item {
+      font-weight: 600;
+      font-size: 0.9rem;
       color: var(--brown);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .hl-value {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--green-dark);
-      line-height: 1.2;
-    }
+    .highlight-item svg { flex-shrink: 0; }
 
-    /* ─── MAIN 2-COL LAYOUT ─── */
+    /* ── MAIN LAYOUT ── */
     .main {
-      max-width: 980px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 52px 20px 80px;
+      padding: 36px 20px 60px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
+      gap: 28px;
+    }
+    @media (max-width: 680px) {
+      .main { grid-template-columns: 1fr; }
     }
 
-    /* ─── INFO CARD ─── */
-    .info-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow);
+    /* ── CARDS ── */
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
     }
-    .info-card-header {
-      background: var(--green);
-      color: var(--white);
-      padding: 28px 28px 24px;
-    }
-    .info-card-header h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
-    /* verbatim from flyer */
-    .info-card-header p { font-size: .9rem; opacity: .85; line-height: 1.75; }
-
-    .info-body { padding: 28px; }
-
-    .section-label {
-      font-size: .72rem;
+    .card-title {
+      font-size: 1rem;
       font-weight: 700;
-      letter-spacing: .13em;
       text-transform: uppercase;
-      color: var(--light-green);
-      margin-bottom: 14px;
+      letter-spacing: 0.08em;
+      color: var(--green);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--beige);
     }
 
-    /* ── Brew list (from flyer) ── */
-    .brew-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
-    .brew-list li {
+    /* ── INFO CARD ── */
+    .info-item {
+      margin-bottom: 16px;
+    }
+    .info-item:last-child { margin-bottom: 0; }
+    .info-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+    .info-value {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--brown);
+    }
+    .drink-list {
+      list-style: none;
+      padding: 0;
+    }
+    .drink-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--beige);
+      font-size: 0.93rem;
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: .93rem;
-      line-height: 1.55;
+      align-items: baseline;
+      gap: 8px;
     }
-    .brew-dot {
+    .drink-list li:last-child { border-bottom: none; }
+    .drink-list li::before {
+      content: '☕';
+      font-size: 0.85rem;
       flex-shrink: 0;
-      margin-top: 6px;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--yellow);
     }
-    .brew-list li strong { color: var(--green); }
+    .drink-name { font-weight: 600; }
+    .drink-desc { color: #666; font-size: 0.87rem; }
 
-    .bonus-tag {
-      display: inline-block;
-      background: var(--orange);
-      color: var(--white);
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-right: 4px;
-      vertical-align: middle;
-    }
-
-    .divider { border: none; border-top: 1px solid var(--beige-dark); margin: 22px 0; }
-
-    /* Host block */
-    .host-block {
+    .host-box {
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 16px;
       background: var(--beige);
-      border-radius: var(--radius-md);
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 4px;
     }
     .host-avatar {
-      width: 52px; height: 52px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: var(--green);
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
       flex-shrink: 0;
     }
-    .host-avatar svg { color: var(--white); width: 26px; height: 26px; }
-    .host-name  { font-weight: 700; font-size: .95rem; color: var(--green); }
-    .host-title { font-size: .8rem; opacity: .6; margin-top: 2px; }
+    .host-name { font-weight: 700; font-size: 0.95rem; }
+    .host-title { font-size: 0.8rem; color: #666; margin-top: 2px; }
 
-    /* About blurb (verbatim from flyer) */
-    .about-blurb {
-      font-size: .88rem;
-      line-height: 1.75;
-      opacity: .72;
-      margin-top: 0;
-    }
-
-    /* ─── BOOKING CARD ─── */
-    .booking-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 24px;
-    }
-    .booking-header {
-      background: var(--yellow);
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-      padding: 24px 28px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .booking-header-left h3 { font-size: 1.1rem; font-weight: 700; color: var(--brown); }
-    .booking-header-left p  { font-size: .8rem; opacity: .6; margin-top: 2px; }
-    .price-tag { font-size: 1.45rem; font-weight: 700; color: var(--green-dark); white-space: nowrap; }
-    .price-tag span { font-size: .78rem; font-weight: 500; opacity: .6; }
-
-    .booking-body { padding: 28px; }
-
-    /* Form fields */
+    /* ── FORM CARD ── */
     .form-group { margin-bottom: 18px; }
-    .form-group label {
+    .form-group:last-of-type { margin-bottom: 0; }
+
+    label {
       display: block;
-      font-size: .78rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      letter-spacing: .07em;
       text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 7px;
-    }
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid var(--beige-dark);
-      border-radius: var(--radius-sm);
-      font-family: inherit;
-      font-size: .93rem;
+      letter-spacing: 0.07em;
       color: var(--brown);
-      background: var(--white);
-      transition: border-color .2s, box-shadow .2s;
-      outline: none;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .form-group input:focus,
-    .form-group select:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(0,91,68,.1);
+      margin-bottom: 6px;
     }
 
-    /* Time slot */
-    .time-slots { display: flex; gap: 10px; }
-    .time-slot {
-      flex: 1;
+    input[type="text"],
+    input[type="tel"],
+    input[type="date"],
+    textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--brown);
+      background: #fafaf8;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    input:focus, textarea:focus {
+      border-color: var(--green);
+      background: #fff;
+    }
+    textarea { resize: vertical; min-height: 70px; }
+
+    /* ── TIME SLOTS ── */
+    .slot-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .slot-label {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3px;
-      padding: 13px 10px;
-      border: 2px solid var(--beige-dark);
-      border-radius: var(--radius-sm);
+      justify-content: center;
+      gap: 4px;
+      padding: 12px 8px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
       cursor: pointer;
-      transition: all .18s;
-      background: var(--white);
-      position: relative;
-      user-select: none;
-    }
-    .time-slot input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
-    .time-slot-time  { font-size: 1.05rem; font-weight: 700; color: var(--green); }
-    .time-slot-label { font-size: .73rem; opacity: .55; }
-    .time-slot:has(input:checked) { border-color: var(--green); background: rgba(0,91,68,.06); }
-    .time-slot:hover { border-color: var(--light-green); }
-
-    /* Guest counter */
-    .guest-counter {
-      display: flex;
-      align-items: stretch;
-      border: 1.5px solid var(--beige-dark);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-    }
-    .guest-btn {
-      width: 48px;
-      border: none;
-      background: var(--beige);
-      font-size: 1.3rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background .15s;
-      color: var(--green);
-      flex-shrink: 0;
-      font-family: inherit;
-      line-height: 1;
-      padding: 0;
-    }
-    .guest-btn:hover:not(:disabled) { background: var(--beige-dark); }
-    .guest-btn:disabled { opacity: .3; cursor: not-allowed; }
-    .guest-display {
-      flex: 1;
+      transition: all 0.2s;
+      background: #fafaf8;
       text-align: center;
-      font-size: 1.1rem;
+    }
+    .slot-label input { display: none; }
+    .slot-label .slot-time {
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--brown);
-      background: var(--white);
-      line-height: 48px;
-      min-height: 48px;
     }
-    .max-note {
-      font-size: .76rem;
-      color: var(--orange);
-      margin-top: 6px;
+    .slot-label .slot-sub {
+      font-size: 0.75rem;
+      color: #888;
+    }
+    .slot-label:hover { border-color: var(--green); background: #f0f7f4; }
+    .slot-label.selected {
+      border-color: var(--green);
+      background: var(--green);
+    }
+    .slot-label.selected .slot-time,
+    .slot-label.selected .slot-sub { color: #fff; }
+    .slot-label.full-slot {
+      border-color: #ddd;
+      background: #f5f5f5;
+      cursor: not-allowed;
+      opacity: 0.65;
+    }
+    .slot-label.full-slot .slot-time { color: #aaa; }
+
+    /* ── AVAILABILITY BADGE ── */
+    .avail-badge {
+      display: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .avail-badge.show { display: block; }
+    .avail-badge.ok { background: #e8f5e9; color: #2e7d32; }
+    .avail-badge.warn { background: #fff8e1; color: #f57f17; }
+    .avail-badge.full { background: #ffebee; color: #c62828; }
+    .avail-badge.loading { background: #f0f0f0; color: #888; }
+
+    /* ── GUEST COUNTER ── */
+    .guest-counter {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 0;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      width: fit-content;
+    }
+    .guest-btn {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: #f0f0ee;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--brown);
+      font-weight: 700;
+      transition: background 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .guest-btn:hover:not(:disabled) { background: var(--green); color: #fff; }
+    .guest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .guest-display {
+      width: 56px;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: none;
+      background: #fff;
+      color: var(--brown);
+      padding: 0;
+      line-height: 40px;
+    }
+    .guest-max-note {
+      font-size: 0.75rem;
+      color: #888;
+      margin-top: 4px;
     }
 
-    /* Submit */
+    /* ── SUBMIT BUTTON ── */
     .btn-submit {
       width: 100%;
-      padding: 15px;
+      padding: 14px;
       background: var(--green);
-      color: var(--white);
+      color: #fff;
       border: none;
-      border-radius: var(--radius-sm);
+      border-radius: 10px;
       font-family: inherit;
-      font-size: .98rem;
+      font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
-      transition: background .2s, box-shadow .2s, transform .1s;
-      letter-spacing: .04em;
-      margin-top: 6px;
+      margin-top: 22px;
+      transition: background 0.2s, transform 0.1s;
+      letter-spacing: 0.04em;
     }
-    .btn-submit:hover:not(:disabled) { background: var(--green-dark); box-shadow: var(--shadow-hover); }
-    .btn-submit:active { transform: scale(.98); }
-    .btn-submit:disabled { opacity: .55; cursor: not-allowed; transform: none; }
-
-    .terms-note {
-      font-size: .73rem;
-      text-align: center;
-      opacity: .45;
-      margin-top: 11px;
-      line-height: 1.5;
+    .btn-submit:hover:not(:disabled) { background: #004535; transform: translateY(-1px); }
+    .btn-submit:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .btn-submit.loading {
+      background: #888;
+      cursor: wait;
     }
 
-    /* Error */
-    .error-msg {
-      background: #FEE2E2;
-      border: 1px solid #FECACA;
-      color: #991B1B;
-      padding: 11px 14px;
-      border-radius: var(--radius-sm);
-      font-size: .86rem;
-      margin-top: 10px;
-      display: none;
-    }
-    .error-msg.show { display: block; }
-
-    /* Spinner */
-    .spinner {
-      display: inline-block;
-      width: 16px; height: 16px;
-      border: 2.5px solid rgba(255,255,255,.35);
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin .7s linear infinite;
-      vertical-align: middle;
-      margin-right: 7px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ─── SUCCESS OVERLAY ─── */
-    .success-overlay {
+    /* ── SUCCESS OVERLAY ── */
+    .overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,.52);
-      z-index: 999;
+      background: rgba(0,0,0,0.55);
+      z-index: 100;
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
-    .success-overlay.show { display: flex; }
-    .success-box {
-      background: var(--white);
-      border-radius: var(--radius-lg);
+    .overlay.show { display: flex; }
+    .overlay-box {
+      background: #fff;
+      border-radius: 20px;
       padding: 40px 32px;
-      max-width: 420px;
+      text-align: center;
+      max-width: 380px;
       width: 100%;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,.25);
-      animation: popIn .32s cubic-bezier(.34,1.56,.64,1);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.2);
     }
-    @keyframes popIn {
-      from { opacity:0; transform:scale(.85); }
-      to   { opacity:1; transform:scale(1); }
-    }
-    .success-icon {
-      width: 68px; height: 68px;
-      background: var(--green);
+    .overlay-icon {
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 18px;
-    }
-    .success-icon svg { width: 34px; height: 34px; color: #fff; }
-    .success-box h3 { font-size: 1.35rem; font-weight: 700; color: var(--green); margin-bottom: 8px; }
-    .success-box p  { font-size: .9rem; opacity: .65; line-height: 1.7; margin-bottom: 22px; }
-    .success-detail {
-      background: var(--beige);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      text-align: left;
-      margin-bottom: 22px;
+      background: var(--green);
       display: flex;
-      flex-direction: column;
-      gap: 9px;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
     }
-    .success-detail-row { display: flex; justify-content: space-between; font-size: .88rem; }
-    .success-detail-row span:first-child { opacity: .6; }
-    .success-detail-row span:last-child  { font-weight: 600; }
-    .btn-close { width: 100%; padding: 13px; background: var(--green); color: #fff; border: none; border-radius: var(--radius-sm); font-family: inherit; font-size: .95rem; font-weight: 700; cursor: pointer; }
+    .overlay-icon svg { width: 32px; height: 32px; }
+    .overlay-box h2 {
+      font-size: 1.4rem;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .overlay-box p { font-size: 0.95rem; color: #555; line-height: 1.6; }
+    .overlay-box .btn-close {
+      margin-top: 24px;
+      padding: 11px 32px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
 
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--brown);
-      color: rgba(255,255,255,.6);
+    /* ── FOOTER ── */
+    .footer {
       text-align: center;
-      padding: 28px 20px;
-      font-size: .82rem;
-      line-height: 1.8;
-    }
-    footer img { width: 100px; height: auto; filter: brightness(0) invert(1); opacity: .85; display: block; margin: 0 auto 10px; }
-    footer strong { color: var(--yellow); }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 700px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 24px; text-align: center; }
-      .hero-logo { align-items: center; }
-      .hero-hook { max-width: 100%; }
-      .main { grid-template-columns: 1fr; gap: 24px; }
-      .booking-card { position: static; }
-      .hl-item { padding: 16px 18px; }
+      padding: 20px 16px;
+      font-size: 0.8rem;
+      color: #999;
+      border-top: 1px solid #e0ddd2;
     }
   </style>
 </head>
 <body>
 
-<!-- ════════════════ HERO ════════════════ -->
-<section class="hero">
-  <div class="hero-inner">
+<!-- ── HERO ── -->
+<header class="hero">
+  <img src="alma-logo.png.png" alt="Alma Tropical Brunch & Coffee" class="hero-logo" />
+  <h1>Coffee <span>Workshop</span></h1>
+  <p>Alma Tropical Brunch &amp; Coffee</p>
+</header>
 
-    <!-- Logo -->
-    <div class="hero-logo">
-      <!--
-        LOGO SETUP:
-        Place your Alma logo PNG (dark/brown version) in the same folder as index.html.
-        Rename it: alma-logo.png.png
-        The CSS filter "brightness(0) invert(1)" turns it white automatically on this green background.
-      -->
-      <img src="alma-logo.png.png" alt="Alma Tropical Coffee & Brunch" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
-      <!-- Fallback text logo if PNG not found -->
-      <div style="display:none; text-align:center;">
-        <div style="font-size:2.2rem; font-weight:700; font-style:italic; letter-spacing:-.02em;">alma</div>
-        <div style="font-size:.65rem; letter-spacing:.22em; text-transform:uppercase; opacity:.7; margin-top:4px;">Tropical Coffee & Brunch</div>
-      </div>
-    </div>
-
-    <!-- Title & hook -->
-    <div class="hero-text">
-      <div class="workshop-eyebrow">Workshop · Daily Class</div>
-      <h1>Vietnamese<br/><em>Coffee Workshop</em></h1>
-      <p class="hero-hook">
-        Ever wondered why Vietnamese coffee is <strong>so bold, so rich & unique</strong> —
-        and so <strong>unforgettable</strong>?<br/><br/>
-        Step into a <strong>local café</strong> and learn the <strong>hidden rituals behind
-        phin-brewed coffee</strong>, just like how locals do it every morning.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ════════════════ HIGHLIGHTS ════════════════ -->
+<!-- ── HIGHLIGHTS ── -->
 <div class="highlights">
-  <div class="hl-item">
-    <span class="hl-label">Price</span>
-    <span class="hl-value">400,000₫</span>
+  <div class="highlight-item">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    90 minutes
   </div>
-  <div class="hl-item">
-    <span class="hl-label">Duration</span>
-    <span class="hl-value">90 min</span>
+  <div class="highlight-item">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+    9:00 AM &amp; 2:00 PM
   </div>
-  <div class="hl-item">
-    <span class="hl-label">Morning</span>
-    <span class="hl-value">09:00 AM</span>
+  <div class="highlight-item">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    400,000 VND / person
   </div>
-  <div class="hl-item">
-    <span class="hl-label">Afternoon</span>
-    <span class="hl-value">02:00 PM</span>
-  </div>
-  <div class="hl-item">
-    <span class="hl-label">Language</span>
-    <span class="hl-value">English</span>
+  <div class="highlight-item">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Max 3 guests
   </div>
 </div>
 
-<!-- ════════════════ MAIN ════════════════ -->
+<!-- ── MAIN ── -->
 <main class="main">
 
-  <!-- ── Info Column ── -->
-  <div class="info-card">
+  <!-- INFO CARD -->
+  <div class="card">
+    <div class="card-title">About the Workshop</div>
 
-    <div class="info-card-header">
-      <h2>What you'll brew</h2>
-      <p>
-        Experience the soul of Vietnam in every cup at Alma Tropical Coffee &amp; Brunch,
-        where you're invited to dive deeper into the country's rich coffee culture. Join our
-        hands-on workshop to explore the fascinating history behind Vietnamese coffee and
-        discover the unique art of the traditional phin filter brewing method.
-      </p>
+    <div class="info-item">
+      <div class="info-label">What you'll experience</div>
+      <div class="info-value">Discover the art of Vietnamese coffee — from bean to cup. Hands-on brewing with guidance from our coffee expert.</div>
     </div>
 
-    <div class="info-body">
-
-      <p class="section-label">What's included</p>
-      <ul class="brew-list">
+    <div class="info-item">
+      <div class="info-label">Menu — 3 Signature Drinks</div>
+      <ul class="drink-list">
         <li>
-          <span class="brew-dot"></span>
-          <span>Brew coffee by the traditional way using a <strong>Phin filter</strong></span>
-        </li>
-        <li>
-          <span class="brew-dot"></span>
-          <span><strong>Salt Coffee</strong> – a Hue-born surprise</span>
-        </li>
-        <li>
-          <span class="brew-dot"></span>
-          <span><strong>Egg Coffee</strong> – Hanoi's silky secret</span>
-        </li>
-        <li>
-          <span class="brew-dot"></span>
           <span>
-            <span class="bonus-tag">Bonus</span>
-            <strong>Coconut Coffee recipe</strong> – tropical harmony in a cup
+            <span class="drink-name">Salt Coffee</span><br/>
+            <span class="drink-desc">A delicate balance of sweet, salty and creamy — Vietnam's coastal specialty</span>
+          </span>
+        </li>
+        <li>
+          <span>
+            <span class="drink-name">Egg Coffee</span><br/>
+            <span class="drink-desc">Velvety egg cream foam on bold Robusta — Hanoi's iconic street drink</span>
+          </span>
+        </li>
+        <li>
+          <span>
+            <span class="drink-name">Coconut Coffee</span><br/>
+            <span class="drink-desc">Tropical coconut milk blended with Vietnamese drip coffee</span>
           </span>
         </li>
       </ul>
+    </div>
 
-      <hr class="divider" />
+    <div class="info-item">
+      <div class="info-label">Location</div>
+      <div class="info-value">Alma Tropical Brunch &amp; Coffee<br/>Green space for cherished moments</div>
+    </div>
 
-      <p class="section-label">Your Host</p>
-      <div class="host-block">
-        <div class="host-avatar">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
-          </svg>
-        </div>
+    <div class="info-item">
+      <div class="info-label">Your Host</div>
+      <div class="host-box">
+        <div class="host-avatar">A</div>
         <div>
-          <!--
-            EDIT HERE → replace [Host Name] with the actual host's name
-            Replace [Title] with their title, e.g. "Coffee Expert"
-          -->
-          <div class="host-name">[Host Name]</div>
-          <div class="host-title">[Title] · Alma Tropical Coffee &amp; Brunch</div>
+          <div class="host-name">[Tên host]</div>
+          <div class="host-title">Coffee Expert · Alma Tropical Brunch &amp; Coffee</div>
         </div>
       </div>
-
-      <hr class="divider" />
-
-      <p class="section-label">Location</p>
-      <div style="display:flex;align-items:flex-start;gap:10px;font-size:.9rem;line-height:1.65;">
-        <svg style="width:18px;height:18px;flex-shrink:0;margin-top:2px;color:var(--green)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-        </svg>
-        <span>
-          <strong>Alma Tropical Coffee &amp; Brunch</strong><br/>
-          <!--
-            EDIT HERE → replace with actual address
-          -->
-          [Café Address]
-        </span>
-      </div>
-
     </div>
   </div>
 
-  <!-- ── Booking Column ── -->
-  <div class="booking-card">
-    <div class="booking-header">
-      <div class="booking-header-left">
-        <h3>Reserve your spot</h3>
-        <p>Small group · Max 3 guests per session</p>
+  <!-- BOOKING FORM CARD -->
+  <div class="card">
+    <div class="card-title">Reserve Your Seat</div>
+
+    <form id="bookingForm" novalidate>
+
+      <div class="form-group">
+        <label for="guestName">Full Name *</label>
+        <input type="text" id="guestName" name="guestName" placeholder="Your full name" required />
       </div>
-      <div class="price-tag">400K <span>/pax</span></div>
-    </div>
 
-    <div class="booking-body">
-      <form id="bookingForm" novalidate>
+      <div class="form-group">
+        <label for="guestPhone">Phone Number *</label>
+        <input type="tel" id="guestPhone" name="guestPhone" placeholder="e.g. 0912 345 678" required />
+      </div>
 
-        <div class="form-group">
-          <label for="guestName">Full Name</label>
-          <input type="text" id="guestName" name="guestName" placeholder="Your name" required />
+      <div class="form-group">
+        <label for="bookingDate">Date *</label>
+        <input type="date" id="bookingDate" name="bookingDate" required />
+      </div>
+
+      <div class="form-group">
+        <label>Time Slot *</label>
+        <div class="slot-group">
+          <label class="slot-label" id="slot-am">
+            <input type="radio" name="timeSlot" value="09:00 AM" required />
+            <span class="slot-time">9:00 AM</span>
+            <span class="slot-sub">Morning session</span>
+          </label>
+          <label class="slot-label" id="slot-pm">
+            <input type="radio" name="timeSlot" value="02:00 PM" />
+            <span class="slot-time">2:00 PM</span>
+            <span class="slot-sub">Afternoon session</span>
+          </label>
         </div>
+        <!-- Availability feedback -->
+        <div id="availBadge" class="avail-badge"></div>
+      </div>
 
-        <div class="form-group">
-          <label for="guestPhone">Phone Number</label>
-          <input type="tel" id="guestPhone" name="guestPhone" placeholder="+84 912 345 678" required />
+      <div class="form-group">
+        <label>Number of Guests *</label>
+        <div class="guest-counter">
+          <button type="button" class="guest-btn" id="guestMinus">−</button>
+          <span class="guest-display" id="guestDisplay">1</span>
+          <button type="button" class="guest-btn" id="guestPlus">+</button>
         </div>
+        <div class="guest-max-note">Maximum 3 guests per booking</div>
+        <input type="hidden" id="guestCount" name="guestCount" value="1" />
+      </div>
 
-        <div class="form-group">
-          <label for="bookingDate">Date</label>
-          <input type="date" id="bookingDate" name="bookingDate" required />
-        </div>
+      <div class="form-group">
+        <label for="guestNote">Notes (optional)</label>
+        <textarea id="guestNote" name="guestNote" placeholder="Any dietary requirements, special requests…"></textarea>
+      </div>
 
-        <div class="form-group">
-          <label>Time Slot</label>
-          <div class="time-slots">
-            <label class="time-slot">
-              <input type="radio" name="timeSlot" value="09:00 AM" required />
-              <span class="time-slot-time">09:00 AM</span>
-              <span class="time-slot-label">Morning</span>
-            </label>
-            <label class="time-slot">
-              <input type="radio" name="timeSlot" value="02:00 PM" />
-              <span class="time-slot-time">02:00 PM</span>
-              <span class="time-slot-label">Afternoon</span>
-            </label>
-          </div>
-        </div>
+      <button type="submit" class="btn-submit" id="submitBtn">Confirm Reservation</button>
 
-        <div class="form-group">
-          <label>Number of Guests</label>
-          <div class="guest-counter">
-            <button type="button" class="guest-btn" id="decreaseGuest" onclick="changeGuests(-1)">−</button>
-            <div class="guest-display" id="guestDisplay">1</div>
-            <button type="button" class="guest-btn" id="increaseGuest" onclick="changeGuests(1)">+</button>
-          </div>
-          <input type="hidden" id="guestCount" name="guestCount" value="1" />
-          <p class="max-note">
-            <svg style="width:13px;height:13px;flex-shrink:0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            Maximum 3 guests per booking
-          </p>
-        </div>
-
-        <div class="form-group">
-          <label for="guestNote">Special Requests <span style="opacity:.45;font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
-          <input type="text" id="guestNote" name="guestNote" placeholder="Allergies, dietary needs..." />
-        </div>
-
-        <button type="submit" class="btn-submit" id="submitBtn">
-          Book Now
-        </button>
-
-        <div class="error-msg" id="errorMsg"></div>
-
-        <p class="terms-note">
-          Free to reserve · Payment at the café on the day of your visit
-        </p>
-
-      </form>
-    </div>
+    </form>
   </div>
 
 </main>
 
-<!-- ════════════════ SUCCESS OVERLAY ════════════════ -->
-<div class="success-overlay" id="successOverlay">
-  <div class="success-box">
-    <div class="success-icon">
-      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-      </svg>
+<!-- ── SUCCESS OVERLAY ── -->
+<div class="overlay" id="overlay">
+  <div class="overlay-box">
+    <div class="overlay-icon">
+      <svg fill="none" stroke="#fff" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
-    <h3>You're booked! ☕</h3>
-    <p>We've received your reservation. See you at the workshop — it's going to be a great cup!</p>
-    <div class="success-detail" id="successDetail"></div>
-    <button class="btn-close" onclick="closeSuccess()">Perfect, see you there!</button>
+    <h2>Booking Received!</h2>
+    <p>Thank you! We'll reach out to confirm your reservation shortly.<br/>See you at the workshop ☕</p>
+    <button class="btn-close" onclick="closeOverlay()">Done</button>
   </div>
 </div>
 
-<!-- ════════════════ FOOTER ════════════════ -->
-<footer>
-  <img src="alma-logo.png.png" alt="Alma" onerror="this.style.display='none'" />
-  <strong>Alma Tropical Coffee &amp; Brunch</strong><br/>
-  "Green space for cherished moments"
+<footer class="footer">
+  © Alma Tropical Brunch &amp; Coffee · Coffee Workshop
 </footer>
 
-<!-- ════════════════ SCRIPTS ════════════════ -->
 <script>
-  // ── Date: min = today ──────────────────────────────────────────────
-  document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
+  // ── REPLACE THIS WITH YOUR DEPLOYED APPS SCRIPT URL ──
+  const APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
-  // ── Guest counter ─────────────────────────────────────────────────
+  // ── DATE: set minimum to today ──
+  const dateInput = document.getElementById('bookingDate');
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute('min', today);
+
+  // ── GUEST COUNTER ──
   let guestCount = 1;
-  document.getElementById('decreaseGuest').disabled = true;
+  let maxGuests = 3;
 
-  function changeGuests(delta) {
-    guestCount = Math.min(3, Math.max(1, guestCount + delta));
+  function updateGuestUI() {
     document.getElementById('guestDisplay').textContent = guestCount;
     document.getElementById('guestCount').value = guestCount;
-    document.getElementById('decreaseGuest').disabled = guestCount <= 1;
-    document.getElementById('increaseGuest').disabled = guestCount >= 3;
+    document.getElementById('guestMinus').disabled = guestCount <= 1;
+    document.getElementById('guestPlus').disabled = guestCount >= maxGuests;
   }
 
-  // ── Form submit ───────────────────────────────────────────────────
-  /*
-   * SETUP REQUIRED:
-   * Replace 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE' below
-   * with the URL from your deployed Google Apps Script.
-   * See HUONG_DAN_DEPLOY.txt for step-by-step instructions.
-   */
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwymbBOrkDqwCj9xRO6-_Lm3Q1QRQv_7Asmt5z3NMGy10MhOqiZ7TSy4Ys7ycYEstNA/exec';
+  document.getElementById('guestMinus').addEventListener('click', () => {
+    if (guestCount > 1) { guestCount--; updateGuestUI(); }
+  });
+  document.getElementById('guestPlus').addEventListener('click', () => {
+    if (guestCount < maxGuests) { guestCount++; updateGuestUI(); }
+  });
 
-  document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+  // ── TIME SLOT SELECTION ──
+  const slotLabels = document.querySelectorAll('.slot-label');
+  slotLabels.forEach(label => {
+    label.addEventListener('click', () => {
+      if (label.classList.contains('full-slot')) return;
+      slotLabels.forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      checkAvailability();
+    });
+  });
+
+  // ── AVAILABILITY CHECK ──
+  let availCheckTimer = null;
+  let lastCheckedDate = '';
+  let lastCheckedSlot = '';
+  let currentSpotsLeft = 3;
+
+  function getSelectedSlot() {
+    const checked = document.querySelector('input[name="timeSlot"]:checked');
+    return checked ? checked.value : null;
+  }
+
+  function showBadge(type, message) {
+    const badge = document.getElementById('availBadge');
+    badge.className = 'avail-badge show ' + type;
+    badge.textContent = message;
+  }
+
+  function hideBadge() {
+    document.getElementById('availBadge').className = 'avail-badge';
+  }
+
+  function setSubmitBlocked(blocked, message) {
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = blocked;
+    btn.textContent = blocked ? (message || 'Slot Unavailable') : 'Confirm Reservation';
+  }
+
+  function checkAvailability() {
+    const date = dateInput.value;
+    const slot = getSelectedSlot();
+    if (!date || !slot) { hideBadge(); return; }
+    if (date === lastCheckedDate && slot === lastCheckedSlot) return;
+    clearTimeout(availCheckTimer);
+    availCheckTimer = setTimeout(() => { _doCheck(date, slot); }, 300);
+  }
+
+  function _doCheck(date, slot) {
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+      hideBadge(); return;
+    }
+    showBadge('loading', 'Checking availability…');
+    setSubmitBlocked(false);
+    const url = APPS_SCRIPT_URL + '?date=' + encodeURIComponent(date) + '&slot=' + encodeURIComponent(slot);
+    fetch(url, { method: 'GET', mode: 'cors' })
+      .then(r => r.json())
+      .then(data => {
+        lastCheckedDate = date;
+        lastCheckedSlot = slot;
+        currentSpotsLeft = data.spotsLeft !== undefined ? data.spotsLeft : 3;
+        maxGuests = Math.min(3, currentSpotsLeft);
+        if (guestCount > maxGuests && maxGuests > 0) guestCount = maxGuests;
+        if (guestCount < 1) guestCount = 1;
+        updateGuestUI();
+        if (currentSpotsLeft <= 0) {
+          showBadge('full', '✗ This slot is fully booked. Please choose another date or time.');
+          setSubmitBlocked(true, 'Slot Full');
+          markSlotFull(slot);
+        } else if (currentSpotsLeft === 1) {
+          showBadge('warn', '⚠ Only 1 spot left for this session!');
+          setSubmitBlocked(false);
+        } else if (currentSpotsLeft === 2) {
+          showBadge('warn', '⚠ Only 2 spots left for this session!');
+          setSubmitBlocked(false);
+        } else {
+          showBadge('ok', '✓ Available — ' + currentSpotsLeft + ' spots remaining');
+          setSubmitBlocked(false);
+        }
+      })
+      .catch(() => {
+        hideBadge();
+        setSubmitBlocked(false);
+        currentSpotsLeft = 3;
+        maxGuests = 3;
+        updateGuestUI();
+      });
+  }
+
+  function markSlotFull(slot) {
+    if (slot === '09:00 AM') {
+      document.getElementById('slot-am').classList.add('full-slot');
+      document.getElementById('slot-am').classList.remove('selected');
+    } else if (slot === '02:00 PM') {
+      document.getElementById('slot-pm').classList.add('full-slot');
+      document.getElementById('slot-pm').classList.remove('selected');
+    }
+  }
+
+  dateInput.addEventListener('change', () => {
+    lastCheckedDate = '';
+    lastCheckedSlot = '';
+    checkAvailability();
+  });
+
+  // ── FORM SUBMIT ──
+  document.getElementById('bookingForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const errorEl = document.getElementById('errorMsg');
-    errorEl.classList.remove('show');
-
-    const name     = document.getElementById('guestName').value.trim();
-    const phone    = document.getElementById('guestPhone').value.trim();
-    const date     = document.getElementById('bookingDate').value;
-    const timeSlot = document.querySelector('input[name="timeSlot"]:checked');
-
-    if (!name)     { showError('Please enter your full name.'); return; }
-    if (!phone)    { showError('Please enter your phone number.'); return; }
-    if (!date)     { showError('Please select a date.'); return; }
-    if (!timeSlot) { showError('Please choose a time slot.'); return; }
-
+    const name  = document.getElementById('guestName').value.trim();
+    const phone = document.getElementById('guestPhone').value.trim();
+    const date  = dateInput.value;
+    const slot  = getSelectedSlot();
+    if (!name || !phone || !date || !slot) {
+      alert('Please fill in all required fields and select a time slot.');
+      return;
+    }
+    if (currentSpotsLeft <= 0) {
+      alert('Sorry, this slot is fully booked. Please choose another date or time.');
+      return;
+    }
+    if (guestCount > currentSpotsLeft) {
+      alert('Only ' + currentSpotsLeft + ' spot(s) left. Please reduce guest count.');
+      return;
+    }
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.classList.add('loading');
+    btn.textContent = 'Sending…';
     const payload = {
       guestName:   name,
       guestPhone:  phone,
       bookingDate: date,
-      timeSlot:    timeSlot.value,
+      timeSlot:    slot,
       guestCount:  guestCount,
       guestNote:   document.getElementById('guestNote').value.trim(),
-      timestamp:   new Date().toLocaleString('en-GB')
+      timestamp:   new Date().toLocaleString('vi-VN')
     };
-
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner"></span>Sending...';
-
     try {
       await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
+        method:  'POST',
+        mode:    'no-cors',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body:    JSON.stringify(payload)
       });
-      showSuccess(payload);
-      this.reset();
+      document.getElementById('overlay').classList.add('show');
+      document.getElementById('bookingForm').reset();
       guestCount = 1;
-      document.getElementById('guestDisplay').textContent = '1';
-      document.getElementById('guestCount').value = '1';
-      document.getElementById('decreaseGuest').disabled = true;
-      document.getElementById('increaseGuest').disabled = false;
-    } catch(err) {
-      showError('Something went wrong. Please try again or contact us directly.');
+      maxGuests = 3;
+      updateGuestUI();
+      slotLabels.forEach(l => l.classList.remove('selected'));
+      hideBadge();
+      lastCheckedDate = '';
+      lastCheckedSlot = '';
+    } catch (err) {
+      alert('Something went wrong. Please try again or contact us directly.');
     } finally {
       btn.disabled = false;
-      btn.innerHTML = 'Book Now';
+      btn.classList.remove('loading');
+      btn.textContent = 'Confirm Reservation';
     }
   });
 
-  function showError(msg) {
-    const el = document.getElementById('errorMsg');
-    el.textContent = msg;
-    el.classList.add('show');
+  function closeOverlay() {
+    document.getElementById('overlay').classList.remove('show');
   }
 
-  function showSuccess(data) {
-    const d = new Date(data.bookingDate + 'T12:00:00');
-    const dateStr = d.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
-    document.getElementById('successDetail').innerHTML = `
-      <div class="success-detail-row"><span>Name</span><span>${data.guestName}</span></div>
-      <div class="success-detail-row"><span>Date</span><span>${dateStr}</span></div>
-      <div class="success-detail-row"><span>Time</span><span>${data.timeSlot}</span></div>
-      <div class="success-detail-row"><span>Guests</span><span>${data.guestCount} ${data.guestCount === 1 ? 'person' : 'people'}</span></div>
-    `;
-    document.getElementById('successOverlay').classList.add('show');
-  }
-
-  function closeSuccess() {
-    document.getElementById('successOverlay').classList.remove('show');
-  }
+  updateGuestUI();
 </script>
 </body>
 </html>
