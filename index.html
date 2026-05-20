@@ -528,7 +528,7 @@
         <textarea id="guestNote" name="guestNote" placeholder="Any dietary requirements, special requests…"></textarea>
       </div>
 
-      <button type="submit" class="btn-submit" id="submitBtn">Confirm Reservation</button>
+      <button type="submit" class="btn-submit" id="submitBtn" disabled>Select a date &amp; time first</button>
 
     </form>
   </div>
@@ -630,7 +630,7 @@
       hideBadge(); return;
     }
     showBadge('loading', 'Checking availability…');
-    setSubmitBlocked(false);
+    setSubmitBlocked(true, 'Checking…');
     const url = APPS_SCRIPT_URL + '?date=' + encodeURIComponent(date) + '&slot=' + encodeURIComponent(slot);
     fetch(url, { method: 'GET', mode: 'cors' })
       .then(r => r.json())
@@ -679,6 +679,8 @@
   dateInput.addEventListener('change', () => {
     lastCheckedDate = '';
     lastCheckedSlot = '';
+    setSubmitBlocked(true, 'Select a time slot');
+    hideBadge();
     checkAvailability();
   });
 
